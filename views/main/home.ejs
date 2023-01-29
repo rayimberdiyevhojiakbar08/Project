@@ -1,0 +1,39 @@
+<%- include('../partial/navbar.ejs') %>
+<table  class="table table-dark table-hover mt-5" style="margin-right: 100%;">
+    <thead>
+      <tr>
+        <th scope="col" style="color: #00FFFF;">№</th> 
+        <th scope="col" style="color: #00FFFF;">Ismi Familyasi</th>
+        <th scope="col" style="color: #00FFFF;">Telefon raqami</th>
+        <th scope="col" style="color: #00FFFF;"> Manzil</th>
+        <th scope="col" style="color: #00FFFF;">Kun</th>
+        <th scope="col" style="color: #00FFFF;">Soat</th>
+        <th scope="col" style="color: #00FFFF;">Ustaning Ismi</th>
+        <th scope="col" style="color: #00FFFF;">Buyurtma Nomi</th>
+        <th scope="col" style="color: #00FFFF;">Buyurtma turi</th>
+        <th scope="col" style="color: #00FFFF;">Narxi</th>
+        <th scope="col" style="color: #00FFFF;">Keshbek(F.Q.P)</th>
+        <th scope="col" style="color: #00FFFF;">Tahrirlash</th>
+        <th scope="col" style="color: #00FFFF;">O'chirish</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% clients.forEach((item, index) =>  { %>
+      <tr>
+        <th><%= index + 1 %></th>
+        <td><%= item.namesure %></td>
+        <td><%= item.number %></td>
+        <td><%= item.adress %></td>
+        <td><%= item.day %></td>
+        <td><%= item.time %></td>
+        <td><%= item.mastername %></td>
+        <td><%= item.ordername %></td>
+        <td><%= item.ordertype %></td>
+        <td><%= item.cost %> so'm</td>
+        <td><%= item.cost / 10 %> so'm</td>
+        <td><a href="/edit/<%= item.id%>" class="btn btn-success btn-sm">Tahrirlash</a></td>
+        <td><a href="/delete/<%= item.id%>" class="btn btn-danger btn-sm">O'chirish</a></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>

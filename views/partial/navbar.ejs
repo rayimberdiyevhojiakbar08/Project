@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home"><i class="bi bi-house-door" style="color: #00FFFF;"></i> Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a href="/add" class="nav-link" style="color: #00FFFF;"><i class="bi bi-person-fill-add"></i> Buyurtma Qo'shish</a>
+          </li>
+          <li class="nav-item">
+            <a href="/download-excell" class="nav-link" style="color: #00FFFF;"><i class="bi bi-filetype-xml"></i> Excell Faylni yuklash</a>
+          </li>
+        </ul>   
+        <form class="d-flex" action="/datasearch" method="post">
+          <input list="datasearch" name="datasearch" type="date" id="date"/>
+    <button class="btn btn-success btn-sm" type="submit">Search</button>
+  </form>
+      </div>
+    </div>
+  </nav>

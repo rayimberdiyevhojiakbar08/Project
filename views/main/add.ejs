@@ -1,0 +1,53 @@
+<%- include('../partial/navbar.ejs') %>
+<div class="container" style="width: 40rem;">
+    <form action="/add" method="post">
+      <h1 style="color: #00FFFF;" class="text-center mt-3 container">Buyurtma Qo'shish</h1>
+      <div class="mb-3">  
+      <input type="text" class="form-control" id="namesure" name="namesure">
+      <label for="namesure" class="form-label" style="color: #00FFFF;">Ism Familya</label>
+      </div>
+      <div class="mb-3">        
+          <input type="tel" class="form-control" id="number" name="number">
+          <label for="number" class="form-label" style="color: #00FFFF;">Telefon raqami</label>
+      </div>
+      <div class="mb-3">
+          <input type="text" class="form-control" id="adress" name="adress">
+          <label for="adress" class="form-label" style="color: #00FFFF;">Manzil</label>
+      </div>
+      <div class="mb-3">
+          <input type="date" class="form-control" id="day" name="day">
+          <label for="day" class="form-label" style="color: #00FFFF;">Kun</label>
+      </div>
+      <div class="mb-3">
+          <input type="time" class="form-control" id="time" name="time">
+          <label for="time" class="form-label" style="color: #00FFFF;">Soat</label>
+      </div>
+      <div class="mb-3">
+          <input type="text" class="form-control" id="mastername" name="mastername">
+          <label for="mastername" class="form-label" style="color: #00FFFF;">Ustaning ismi</label>
+      </div>
+      <div class="mb-3">
+          <input type="number" class="form-control" id="cost" name="cost">
+         <label for="cost" class="form-label" style="color: #00FFFF;">Narxi</label>
+      </div>
+      <div class="mb-3 ">
+          <input list="ordername" name="ordername"/>
+          <datalist id="ordername">
+            <option value="Santexnik">
+            <option value="Elektirik">
+            <option value="Plotnik">
+          </datalist>
+          <label style="color: #00FFFF;">Kim kerak:</label>
+      </div>
+      <div class="mb-3 ">
+          <input list="ordertype" name="ordertype"/>
+          <datalist id="ordertype">
+            <option value="Online">
+            <option value="Telefonda">
+            <option value="Ofisga kelib">
+          </datalist>
+          <label style="color: #00FFFF;">Buyurtma turi</label>
+      </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
