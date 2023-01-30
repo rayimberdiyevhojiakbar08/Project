@@ -1,40 +1,56 @@
-<div class="container mt-5 login-box" style="width: 35rem;">
-    <h1 style="color: #00FFFF;"></i>Tahrirlash</h1>
-    <form action="/edit/<%= data._id %>" method="POST">
-        <div class="mb-3 ">  
-        <input type="text" class="form-control" id="namesure" name="namesure" value="<%= data.namesure %>">
-        <label for="namesure" class="form-label">Ism Familya</label>
-        </div>
-        <div class="mb-3">        
-            <input type="tel" class="form-control" id="number" name="number" value="<%= data.number %>">
-            <label for="number" class="form-label">Telefon raqami</label>
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" id="adress" name="adress" value="<%= data.adress %>">
-            <label for="adress" class="form-label">Manzil</label>
-        </div>
-        <div class="mb-3">
-            <input type="datetime-local" class="form-control" id="date" name="date" value="<%= data.date %>">
-            <label for="date" class="form-label">Sana</label>
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" id="mastername" name="mastername" value="<%= data.mastername %>">
-            <label for="mastername" class="form-label">Ustaning ismi</label>
-        </div>
-        <div class="mb-3">
-            <input type="number" class="form-control" id="cost" name="cost" value="<%= data.cost %>">
-           <label for="cost" class="form-label">Narxi</label>
-        </div>
-        <div class="mb-3 ">  
-            <input list="ordername" name="ordername" value="<%= data.ordername %>">
-            <datalist id="ordername">
-              <option value="Santexnik">
-              <option value="Elektirik">
-              <option value="Plotnik">
-            </datalist>
-            <label>Kim kerak:</label>
-        </div>
-    <button type="submit">Qo'shish</button>
+<%- include('../partial/navbar.ejs') %>
+<div class="container" style="width: 40rem;">
+    <form action="/edit/<%= data._id %>" method="post">
+      <h1 style="color: #00FFFF;" class="text-center mt-3 container">Tahrirlash</h1>
+      <div class="mb-3">
+      <label for="namesure" class="form-label" style="color: #00FFFF;">Ism Familya</label>
+      <input type="text" class="form-control" id="namesure" name="namesure" value="<%= data.namesure %>">
+      
+      </div>
+      <div class="mb-3">
+          <label for="number" class="form-label" style="color: #00FFFF;">Telefon raqami</label>
+          <input type="tel" class="form-control" id="number" name="number" value="<%= data.number %>">   
+      </div>
+      <div class="mb-3">
+         <label for="adress" class="form-label" style="color: #00FFFF;">Manzil</label>
+          <input type="text" class="form-control" id="adress" name="adress" value="<%= data.adress %>">
+      </div>
+      <div class="mb-3">
+          <label for="day" class="form-label" style="color: #00FFFF;">Kun</label>
+          <input type="date" class="form-control" id="day" name="day" value="<%= data.day %>"> 
+      </div>
+      <div class="mb-3">
+          <label for="time" class="form-label" style="color: #00FFFF;">Soat</label>
+          <input type="time" class="form-control" id="time" name="time" value="<%= data.time %>">       
+      </div>
+      <div class="mb-3">
+          <label for="mastername" class="form-label" style="color: #00FFFF;">Ustaning ismi</label>
+          <input type="text" class="form-control" id="mastername" name="mastername" value="<%= data.mastername %>">  
+      </div>
+      <div class="mb-3">
+          <label for="cost" class="form-label" style="color: #00FFFF;">Narxi</label>
+          <input type="number" class="form-control" id="cost" name="cost" value="<%= data.cost %>">
+         
+      </div>
+      <div class="mb-3 ">
+        <label style="color: #00FFFF;">Kim kerak:</label>
+          <input list="ordername" name="ordername" value="<%= data.ordername %>"/>
+          <datalist id="ordername">
+            <option value="Santexnik">
+            <option value="Elektirik">
+            <option value="Plotnik">
+          </datalist>   
+      </div>
+      <div class="mb-3 ">
+        <label style="color: #00FFFF;">Buyurtma turi</label>
+          <input list="ordertype" name="ordertype" value="<%= data.ordertype %>"/>
+          <datalist id="ordertype">
+            <option value="Online">
+            <option value="Telefonda">
+            <option value="Ofisga kelib">
+          </datalist>
+          
+      </div>
+        <button type="submit" class="btn btn-primary">Add</button>
     </form>
 </div>
-
