@@ -10,7 +10,7 @@ router.get('/', Main.signUpPage);
 router.get('/home', Main.listPage);
 router.get('/add', Main.addPage);
 router.get('/edit/:id', Main.editPage);
-router.get('/delete/:id', Main.isAuth, Main.delete);
+router.get('/delete/:id', Main.delete);
 router.get('/stat', Main.statPage);
 
 router.post('/', Main.signUp);

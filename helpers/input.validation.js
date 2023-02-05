@@ -2,8 +2,8 @@ class Validation {
     async InputValidation(req, res, next) {
         req.check('namesure').notEmpty().withMessage("Ism familya bo'sh bo'lmasin");
         req.check('adress').notEmpty().withMessage("Manzil bo'sh bo'lmasin");
-        req.check('madername').notEmpty().withMessage("Buyurtma nomi bo'sh bo'lmasin");
-        req.check('orstername').notEmpty().withMessage("Usta ismi bo'sh bo'lmasin");
+        req.check('ordername').notEmpty().withMessage("Buyurtma nomi bo'sh bo'lmasin");
+        req.check('mastername').notEmpty().withMessage("Usta ismi bo'sh bo'lmasin");
         req.check('ordertype').notEmpty().withMessage("Buyurtma turi bo'sh bo'lmasin");
         req.check('cost').notEmpty().withMessage("Narx bo'sh bo'lmasin");
         req.check('cost').isInt().withMessage("Narx raqam bo'lsin");
