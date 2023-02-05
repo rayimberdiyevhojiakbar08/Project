@@ -1,6 +1,6 @@
 import Order from '../models/order.model.js'
+import mongoose from 'mongoose';
 import XLSX from 'xlsx';
-import path from 'path';
 class Main {
     signUpPage(req, res) {
         res.render('main/signup');
@@ -23,17 +23,19 @@ class Main {
     }
     async add(req, res) {
         await Order.create(req.body);
-         res.redirect('/home');
+        req.flash("success", "Yangi buyurtma qo'shildi !");
+        res.redirect('/home');
     }  
-    async editPage(req, res) { //optomPage
+    async editPage(req, res) {
         const _id = req.params.id;
         const data = await Order.findById(_id);
         res.render('main/edit', { data });
     }
-    async edit(req, res) {     //optom
+    async edit(req, res) {
         const id = req.params.id;
         const dates = req.body;
         await Order.findByIdAndUpdate(id, dates);
+        req.flash("success", "Tahrirlandi !");
         res.redirect('/home');
     }
     async delete(req, res) { 
@@ -43,7 +45,6 @@ class Main {
     }
     async searchresult(req, res) {
         let search = req.body.datasearch;
-
         let result = await Order.find({ day:search });
         if (result.length !== 0) {
             res.render("main/searchresult", { title:"Natijalar", dataresult:result});
@@ -51,17 +52,49 @@ class Main {
             res.render("main/searchresult", { title:"Natijalar", dataresult:0});
         }
     }
-    async masterSearch(req, res) {
-        let search = req.body.mastersearch;
-
-         let result = await Order.find({ mastername:search });
-        if (result.length !== 0) {
-            res.render("main/searchresult", { title:"Natijalar", dataresult:result});
+    isAuth(req, res, next) {
+        if (!req.session.user) {
+            return res.redirect("/");
         } else {
-            res.render("main/searchresult", { title:"Natijalar", dataresult:0});
+            next();
         }
     }
-
+    async statPage(req, res) {
+        const data  = await Order.find();
+        let summa = await Order.aggregate([{ $group: { _id: 'cost', total: { $sum: '$cost' } } }])
+        res.render('main/stat', {data, summa}); 
+        
+    }
         
 }
 export default new Main()
+
+export class MasterSearch {
+    async masterStatDownloadExcell(req, res) {
+        let search = req.body.mastersearch;
+        const result = await Order.find({ mastername:search });
+        var wb = XLSX.utils.book_new(); //new workbook
+        Order.find((err,result)=>{
+            if(err){
+                console.log(err)
+            }else{
+                var temp = JSON.stringify(result);
+                temp = JSON.parse(temp);
+                var ws = XLSX.utils.json_to_sheet(temp);
+                var down = '../public/Usta.xlsx'
+               XLSX.utils.book_append_sheet(wb,ws,"sheet1");
+               XLSX.writeFile(wb,down);
+               res.download(down);
+            }
+        });
+    }
+    async masterSearch(req, res) {
+        let search = req.body.mastersearch;
+        const result = await Order.find({ mastername:search });
+        if (result.length !== 0) {
+            res.render("main/mastersearch", { title:"Natijalar", dataresult:result});
+        } else {
+            res.render("main/mastersearch", { title:"Natijalar", dataresult:0});
+        }
+    }
+}

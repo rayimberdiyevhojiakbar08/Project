@@ -8,7 +8,27 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <title>PROJECT</title>
 </head>
-<body style="background-color: #36454F;">
+<body style="background-color: #141414;">
+    <div>
+        <% if (result === "") { %> 
+            <% console.log('nonavbar') %>
+        <% }else { %> 
+          <%- include('partial/navbar') %>
+        <% } %>
+    </div>
+        <div class="container">
+            <div class="container mt-3" style="width: 40rem;">
+                <% if (message) { %> 
+                    <% if (message.errors) {
+                        message.errors.forEach(msg => { %>
+                            <div class="alert alert-danger text-center p-2"><%= msg %></div>
+                    <% }) } else if (message.success) { %> 
+                        <div class="alert alert-success text-center p-2"><%= message.success %></div>
+                    <% } %>                     
+                <% } %>
+        </div>
     <%- body %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>

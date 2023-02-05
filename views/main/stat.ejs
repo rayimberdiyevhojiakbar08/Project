@@ -1,0 +1,56 @@
+<hr>
+<div class="row">
+    <div class="col-md-8">
+       <h1 class="text-center" style="color: #00ffff;">Diagramma</h1>
+      <div class="card" style="width: 45rem;">
+        <div>
+            <canvas id="myChart"></canvas>
+          </div>
+          
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+           <script>
+              const labels = [
+              'Yanvar',
+              'Fevral',
+              'Mart',
+              'Aprel',
+              'May',
+              'Iyun',
+            ];
+            const data = {
+              labels: labels,
+              datasets: [{
+                label: 'Sayt Statistikasi',
+                backgroundColor: '#24eded',
+                borderColor: '#24eded',
+                data: [0, 10, 5, 2, 20, 30, 45],
+              }]
+            };
+            const config = {
+            type: 'line',
+            data,
+            options: {}
+          };
+           </script>
+           <script>
+            // === include 'setup' then 'config' above ===
+          
+            var myChart = new Chart(
+              document.getElementById('myChart'),
+              config
+            );
+          </script>
+          
+      </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="width: 20rem; margin-left: 40%;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-center" style="background-color:#00ffff ;" >Statistika <i class="bi bi-bar-chart-fill"></i></li>
+                <li class="list-group-item text-center">Umumiy Buyurtmalar soni: <%= data.length%></li>
+                <li class="list-group-item text-center">Jami mablag': <%= summa[0].total %></li>
+                <li class="list-group-item text-center">Jami F.Q.P: <%= summa[0].total / 10 %></li>
+            </ul>
+        </div>        
+    </div>
+</div>
